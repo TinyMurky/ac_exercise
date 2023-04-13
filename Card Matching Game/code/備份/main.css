@@ -1,0 +1,122 @@
+body{
+  font-family: 'Nunito', sans-serif;
+}
+#cards-display-panel {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*以下為卡片設定*/
+.card {
+  /*卡片位置的排版*/
+  
+  flex-basis:7%;/*100 / 一排13張 ～ 13 剩下當作margin*/
+  flex-grow: 0;/*大家不會去佔領空的margin*/
+  flex-shrink: 1; /*數字1以上的會shrink同比例*/
+  height:8vw;/*和視窗高度的8％一樣高*/
+  box-sizing: border-box;
+  border: 5px solid #e3e3e3;
+  margin: 2px;
+  padding:0;
+  /*卡片內部排板*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /*翻面*/
+}
+.card:active{
+  transform: rotateY( 180deg ) ;
+  transition: transform 3s;
+}
+.back {
+  background: url("https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png");
+  background-size: cover;
+}
+.card-main-icon{
+  /*卡片中央圖片設定*/
+  max-height:30%;
+  max-width: 30%;
+  align-self: center;
+
+  /*防止點擊與選擇*/
+  user-select: none;
+  pointer-events: none;
+}
+.card-info {
+  /*卡片左上與右下*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*box model*/
+  max-height: 30%;
+  max-width: 10%;
+  margin: 0;
+  padding: 0 10%;
+
+  /*防止點擊與選擇*/
+  user-select: none;
+  pointer-events: none;
+}
+.card-side-icon {
+  max-height: 100%;
+  max-width: 100%;
+  /*防止點擊與選擇*/
+  user-select: none;
+  pointer-events: none;
+}
+.card-number {
+  font-size:12px;
+  max-height: 100%;
+  max-width: 100%;
+  /*防止點擊與選擇*/
+  user-select: none;
+  pointer-events: none;
+}
+
+.card .card-info:last-child{
+  /*把右下角的數字轉過來*/
+  transform: rotate(180deg);
+  align-self: end;
+}
+/*處理paired好的card*/
+.paired {
+  background-color: #dae0e3;
+}
+/*卡片設定結束*/
+
+/*標題設定*/
+header {
+  /*display*/
+  display:flex;
+  flex-direction: column;
+  align-items:flex-end;
+  /*box-model*/
+  width:94%;
+  margin:0 0 20px 0;
+  padding: 0;
+
+}
+header .title{
+  /*display*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /*box-model*/
+}
+header .title img{
+  max-width:3em;
+  max-height:3em;
+  margin-right: 0.5em;
+}
+header .score {
+  margin: 0;
+  color: #6c90ac;
+}
+header .tried {
+  margin-top: 0;
+}
+/*標題設定結束*/
+p {
+  margin: 0;
+  padding: 0;
+}

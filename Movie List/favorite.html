@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="favorite.css">
+
+  <!--bootstrap-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+  <!--axios-->
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <title>我的最愛電影</title>
+</head>
+
+<body>
+  <!--nav bar start-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Movie List</a>
+
+      <!--button 裏面的aria-expanded不要刪，他是無障礙用的-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="movieList.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="favorite.html">My Favorate</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--nav bar end-->
+  <!--inline form-->
+  <!--mt-5 5是往上margin 5-->
+  <div class="container mt-5">
+
+    <!--search bar start-->
+    <div class="row mb-2" id="search-bar"><!--這一排是自己加的不再inline form裏-->
+      <!--用途是製造自己一排空間-->
+      <form class="row row-cols-lg-auto g-3 align-items-center" id="search-movie-form">
+        <div class="col-12">
+          <!--下面這行label是給screen reader用的-->
+          <label class="visually-hidden" for="search-movie-input">Search Movie</label>
+          <div class="input-group">
+            <div class="input-group-text">@</div>
+            <input type="text" class="form-control" id="search-movie-input" name="movie-searched"
+              placeholder="Search Movie">
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button id="search-submit" type="submit" class="btn btn-primary" for="search-movie-form">Search
+            Submit</button>
+        </div>
+      </form>
+    </div>
+    <!--search bar end-->
+    <!--data-panel start-->
+    <div id="data-panel" class="row">
+      <!--render movie list-->
+    </div>
+  </div>
+  <!--data-panel end-->
+  </div>
+
+  <!--page navigator-->
+  <nav aria-label="Page navigation example">
+    <ul id="paginator" class="d-flex pagination justify-content-center">
+    </ul>
+  </nav>
+  <!-- Movie Modal -->
+  <div class="modal fade" id="movie-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movie-modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="movie-modal-body">
+          <div class="row">
+            <div id="movie-modal-image" class="col-sm-8">
+              <!--class img-fluid會讓圖片 max-width: 100%; and height: auto-->
+              <img src="https://webdev.alphacamp.io/posters/c9xxwwhphdaima2f1wefesbhafb.jpg" alt="movie-poster"
+                class="img-fluid">
+            </div>
+            <div id="movie-modal-text" class="col-sm-4">
+              <p id="movie-modal-date"><em>create date 2022/10/10</em></p>
+              <p id="movie-modal-discription">sdufhfsfui</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--自己的JS-->
+  <script src="favorite.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="pos.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+  <title>Pos Machine</title>
+</head>
+
+<body>
+  <div class="container">
+    <h3>AC咖啡 點餐機</h3>
+    <!-- 菜單區塊 -->
+    <div id="menu" class="row">
+      <!--  第 1 個卡片  -->
+
+    </div>
+    <!-- 購物車清單 -->
+    <h4 class="my-3">購物車清單</h4>
+    <div class="col-6">
+      <ul id="cart" class="list-group">
+      </ul>
+    </div>
+    <h5 class="my-3">總金額：<span id="total-amount">--</span></h5>
+    <button id="submit-button" type="button" class="btn btn-primary" data-bs-toggle="modal"
+      data-bs-target="#submit-display">送出訂單</button>
+  </div>
+
+  <!--以下為送出畫面-->
+  <div id="submit-display" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal title</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button id="cancel-submit" type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button id="submit-confirm" type="button" class="btn btn-primary" data-bs-dismiss="modal">確認送出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="pos.js"></script>
+</body>
+
+</html>

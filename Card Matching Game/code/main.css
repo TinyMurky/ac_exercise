@@ -1,0 +1,272 @@
+body{
+  font-family: 'Nunito', sans-serif;
+  background-color: #fdfeff;
+}
+#cards-display-panel {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*以下為卡片設定*/
+.card{
+  /*卡片位置的排版*/
+  flex-basis:7%;/*100 / 一排13張 ～ 13 剩下當作margin*/
+  flex-grow: 0;/*大家不會去佔領空的margin*/
+  flex-shrink: 1; /*數字1以上的會shrink同比例*/
+  height:8vw;/*和視窗高度的8％一樣高*/
+  box-sizing: border-box;
+  margin: 2px;
+  padding:0;
+
+
+  /*裝飾*/
+  border: 1px solid #e3e3e3;
+  box-shadow: 1px 1px 2px #e2d9c7;
+  /*翻面*/
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.card-front{
+  position: absolute;
+  /*卡片內部排板*/
+  height: 100%;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /*翻面*/
+  transform: rotateX(0deg);/*firefox翻排bug，加這一排才不會顯示數字*/
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+.back {
+  /*開局的時候把所有卡都翻過來到背面*/
+  transform: rotateY( 180deg );
+  transition: transform 0.5s;
+}
+.card-back{
+  position: absolute;
+  background: url("https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png");
+  background-size: cover;
+  height: 100%;
+  width:100%;
+  
+  /*翻排使用*/
+  backface-visibility:hidden;
+  /*因為back翻到背面，把原本在被面的卡被翻到正面*/
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+.card-main-icon{
+  /*卡片中央圖片設定*/
+  max-height:30%;
+  max-width: 30%;
+  align-self: center;
+
+  /*防止點擊與選擇*/
+  user-select: none;
+  pointer-events: none;
+}
+.card-info {
+  /*卡片左上與右下*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*box model*/
+  max-height: 30%;
+  max-width: 10%;
+  margin: 0;
+  padding: 0 10%;
+
+  /*防止點擊與選擇*/
+  user-select: none;
+  pointer-events: none;
+}
+.card-side-icon {
+  max-height: 100%;
+  max-width: 100%;
+  /*防止點擊與選擇*/
+  user-select: none;
+  pointer-events: none;
+}
+.card-number {
+  font-size:12px;
+  max-height: 100%;
+  max-width: 100%;
+  /*防止點擊與選擇*/
+  user-select: none;
+  pointer-events: none;
+}
+
+.card .card-info:last-child{
+  /*把右下角的數字轉過來*/
+  transform: rotate(180deg);
+  align-self: end;
+}
+/*處理paired好的card*/
+.paired {
+  background-color: #dae0e3;
+}
+/*卡片設定結束*/
+
+/* 卡片動畫*/
+.wrong{
+  animation-name: wrongAnimation;
+  animation-duration: 0.2s;
+  animation-iteration-count: 5;
+}
+@keyframes wrongAnimation{
+  to {
+    border: 2px solid #ffde4f;
+  }
+}
+/*卡片動畫結束*/
+
+/*標題設定*/
+header {
+  /*display*/
+  display:flex;
+  flex-direction: column;
+  align-items:flex-end;
+  /*box-model*/
+  width:94%;
+  margin:0 0 20px 0;
+  padding: 0;
+
+}
+header .title{
+  /*display*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /*box-model*/
+}
+header .title img{
+  max-width:3em;
+  max-height:3em;
+  margin-right: 0.5em;
+}
+header .score {
+  margin: 0;
+  color: #6c90ac;
+}
+header .tried {
+  margin-top: 0;
+}
+/*標題設定結束*/
+
+/*結束面板*/
+.ending{
+  /*position*/
+  position: absolute;
+  top:30%;
+  /*display*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*box-model*/
+  height:45%;
+  width:93.4%;
+  /*style*/
+  background-color: RGBA(232, 246, 254, 0.8);
+
+}
+.display-none{
+    display:none;
+}
+.complete-sign{
+  /*position*/
+  position: relative;
+  bottom: 10vm;
+  /*box-model*/
+  margin:0 0 0px 0;
+  padding: 0 0 0 0;
+  /*style*/
+  font-size: 50px;
+  color: #6c90ac;
+}
+.complete-score .complete-tried{
+
+  /*box-model*/
+  margin:5px 0 0px 0;
+  padding: 0 0 0 0;
+}
+/*
+========================
+      BUTTON
+========================
+*/
+.text-box {
+    margin-right: 12vw;
+    margin-top: 2vw;
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: absolute;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+p {
+  margin: 0;
+  padding: 0;
+}

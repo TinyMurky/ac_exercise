@@ -1,0 +1,63 @@
+body {
+  background-color: #f8f0e2;
+}
+
+.col-20 {
+    max-width: 18.7%;
+}
+
+.user-card-item{
+  transform: scale(1);
+  box-shadow: 1px 1px 2px #e2d9c7;
+}
+
+.user-card-item:hover{
+
+  transform: scale(1.05);
+  box-shadow: 3px 3px 4px #e2d9c7;
+  transition-duration: 0.05s;
+}
+
+.card-like-button {
+  /*position*/
+  position: absolute;
+  top: 5%;
+  right: 9%;
+}
+
+.card-like-button{
+
+  color: #ffd98c;
+}
+
+.card-like-button:hover {
+  color: rgb(226, 13, 13);
+  transform: scale(1.15);
+  transition-duration: 0.05s;
+  user-select: None;
+  cursor: pointer;
+}
+
+.card-like-button:active{
+  color: rgb(255, 65, 65);
+  transform: scale(1);
+  transition-duration: 0.05s;
+}
+.playing {
+  transform: scale(1.15);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+  background: rgba(100,100,100,0.4);
+}
+.user-icon, .user-name {
+
+  /* pointer-events: None; */
+  user-select: none;
+  cursor: pointer;
+}
+.user-card-item {
+  pointer-events: auto;
+}
+.draggable.dragging {
+  opacity: .5;
+}
